@@ -8,6 +8,7 @@ Map<String, dynamic> total_revenue_per_city(List<Map<String, dynamic>> orders) {
   return revenue_per_city;
 }
 
+/////////////////////////////
 List<String> top_five_custmers(List<Map<String, dynamic>> orders) {
   Map<String, dynamic> total_custmers = {};
   orders.map((e) {
@@ -17,6 +18,22 @@ List<String> top_five_custmers(List<Map<String, dynamic>> orders) {
   }).toList();
   var sorted_total_custmers = total_custmers.entries.toList()
     ..sort((a, b) => b.value.compareTo(a.value));
-  List<String> top_five_custmers = sorted_total_custmers.take(5).map((e) => e.key).toList();
+  List<String> top_five_custmers = sorted_total_custmers
+      .take(5)
+      .map((e) => e.key)
+      .toList();
   return top_five_custmers;
+}
+
+/////////////////////////////
+Map<String, List<Map<String, dynamic>>> orders_by_month(
+  List<Map<String, dynamic>> orders,
+) {
+  Map<String, List<Map<String, dynamic>>> orders_by_month = {};
+  orders.map((e) {
+    String key = e['date'].toString().split('-')[1];
+    orders_by_month[key] ??= [] ;
+    orders_by_month[key]!.add(e);
+  }).toList();
+  return orders_by_month;
 }
