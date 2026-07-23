@@ -2,17 +2,17 @@ import 'orders_data.dart';
 import 'orders_functions.dart';
 
 void main() {
-  print(total_revenue_per_city(orders));
+  var totalRevenue = total_revenue_per_city(orders);
+    print(totalRevenue);
   print('///////////////////////////////');
-  print(top_five_custmers(orders));
+  var topCustomers = top_five_custmers(orders);
+    print(topCustomers);
   print('///////////////////////////////');
-  orders_by_month(orders).forEach((month, orders) {
-    print("Month: $month");
-    print(orders);
-    print("----------------");
-  });
+  var order_by_month = orders_by_month(orders);
+  print(order_by_month);
+  print('///////////////////////////////');
+  var searchResults = search('ah', orders);
+  print(searchResults);
 }
 
-List<String> month(String date) {
-  return date.split('');
-}
+

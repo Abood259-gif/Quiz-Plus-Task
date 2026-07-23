@@ -1,3 +1,5 @@
+
+
 Map<String, dynamic> total_revenue_per_city(List<Map<String, dynamic>> orders) {
   Map<String, dynamic> revenue_per_city = {};
   orders.map((e) {
@@ -36,4 +38,15 @@ Map<String, List<Map<String, dynamic>>> orders_by_month(
     orders_by_month[key]!.add(e);
   }).toList();
   return orders_by_month;
+}
+
+/////////////////////////////
+String search(String search, List<Map<String, dynamic>> orders) {
+  String result = '';
+  orders.map((e) {
+    if (e['customer'].toString().toLowerCase().contains(search.toLowerCase())) {
+      result += e['customer'] + '\n';
+    }
+  }).toList();
+  return result;
 }
